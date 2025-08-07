@@ -42,7 +42,6 @@
   document.body.appendChild(painel);
 
   /* ---------- Matrix de fundo ---------- */
-  const nome = "FREITAS DA BLAZER";
   const canvas = document.getElementById("matrixCanvas");
   const ctx = canvas.getContext("2d");
   canvas.width = painel.clientWidth;
