@@ -26,7 +26,7 @@
     <div id="progressBar" style="margin-top:10px;height:22px;background:#111;border-radius:10px;overflow:hidden;border:2px solid #00f;box-shadow:0 0 10px #00f,0 0 20px #00f;display:none;">
       <div id="progressInner" style="height:100%;width:0%;background:#00ff00;text-align:center;font-weight:bold;color:#000;line-height:22px;text-shadow:0 0 5px #0022ff,0 0 10px #00ff00;"></div>
     </div>
-    <div id="horaBranco" style="margin-top:12px;font-size:18px;text-align:center;font-weight:bold;color:#ff0000;text-shadow:0 0 5px #ff0000,0 0 10px #ff0000,0 0 15px #ff0000;animation:neonRed 1s infinite alternate;">Entrada Prevista: --:--</div>
+    <div id="horaBranco" style="margin-top:12px;font-size:18px;text-align:center;font-weight:bold;color:#0022ff;text-shadow:0 0 5px #0022ff,0 0 10px #0022ff,0 0 15px #0022ff;animation:neonRed 1s infinite alternate;">Entrada Prevista: --:--</div>
     <div id="pessoasEntrando" style="display:none;text-align:center;font-weight:bold;color:#00ffcc;font-size:14px;margin-top:10px;animation:piscar 1.5s infinite;">👥 0 clientes entraram!</div>
     <div id="assertividade" style="display:none;text-align:center;font-weight:bold;font-size:15px;margin-top:4px;color:#00ffff;"></div>
     <div style="text-align:center;margin:8px 0;font-weight:bold;color:#00ff00;animation:piscar 1s infinite;">100% SEM GALE</div>
@@ -53,7 +53,8 @@
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "#0022ff";
     letters.forEach((y, i) => {
-      const text = nome[Math.floor(Math.random() * nome.length)];
+      const text = String.fromCharCode(30000 + Math.random() * 33);
+      const x = i * 10;
       ctx.fillText(text, x, y);
       letters[i] = y > canvas.height + Math.random() * 10000 ? 0 : parseFloat(y) + 10;
     });
