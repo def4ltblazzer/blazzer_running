@@ -42,38 +42,22 @@
   document.body.appendChild(painel);
 
   /* ---------- Matrix de fundo ---------- */
+  const nome = "FREITAS DA BLAZER";
   const canvas = document.getElementById("matrixCanvas");
   const ctx = canvas.getContext("2d");
-
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  const text = "FREITAS DA BLAZER".split(""); // letras fixas
-  const fontSize = 20;
-  const columns = Math.floor(canvas.width / fontSize);
-  const drops = Array(columns).fill(0);
-
-  function draw() {
-    // Fundo azul com leve transparência para rastro
-    ctx.fillStyle = "rgba(0, 0, 255, 0.1)";
+  canvas.width = painel.clientWidth;
+  canvas.height = painel.clientHeight;
+  const letters = Array(256).join("0").split("");
+  setInterval(() => {
+    ctx.fillStyle = "rgba(0,0,0,0.3)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = "#ff1a1a"; // Cor vermelha
-    ctx.font = fontSize + "px monospace";
-
-    for (let i = 0; i < columns; i++) {
-      const char = text[Math.floor(Math.random() * text.length)];
-      const x = i * fontSize;
-      const y = drops[i] * fontSize;
-
-      ctx.fillText(char, x, y);
-
-      if (y > canvas.height && Math.random() > 0.975) {
-        drops[i] = 0;
-      }
-
-      drops[i]++;
-    }
+    ctx.fillStyle = "#0022ff";
+    letters.forEach((y, i) => {
+      const text = nome[Math.floor(Math.random() * nome.length)];
+      ctx.fillText(text, x, y);
+      letters[i] = y > canvas.height + Math.random() * 10000 ? 0 : parseFloat(y) + 10;
+    });
+  }, 40);
 
   /* ---------- Arraste touch + mouse ---------- */
   painel.addEventListener("mousedown", startDrag);
