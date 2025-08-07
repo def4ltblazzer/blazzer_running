@@ -1,4 +1,4 @@
-(function () {
+javascript:(function () {
   if (document.getElementById("painelWhite14x")) return;
 
   /* ---------- Painel básico ---------- */
